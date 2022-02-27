@@ -1,0 +1,26 @@
+{
+  "name": "o4p",
+  "version": "1.0.0",
+  "description": "A trial sdk for fintech",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/EmmanuelToluwanimi/o4p-sdk.git"
+  },
+  "keywords": [
+    "fintech",
+    "sdk",
+    "trial",
+    "test"
+  ],
+  "author": "Emmanuel Toluwanimi",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/EmmanuelToluwanimi/o4p-sdk/issues"
+  },
+  "homepage": "https://github.com/EmmanuelToluwanimi/o4p-sdk#readme"
+}
