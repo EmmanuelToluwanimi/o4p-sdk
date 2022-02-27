@@ -141,7 +141,9 @@ const checkout = async (params) => {
 
     try {
 
-        await fetch(URLs.initiate_checkout.url, requestOptions)
+       const res = await fetch(URLs.initiate_checkout.url, requestOptions)
+
+       return res
 
     } catch (error) {
         console.log(error.message)
@@ -169,11 +171,42 @@ const tokenize = async (params) => {
 
     try {
 
-        await fetch(URLs.tokenization.url, requestOptions)
+       const res = await fetch(URLs.tokenization.url, requestOptions)
+
+       return res
 
     } catch (error) {
         console.log(error.message)
         return error.message
     }
 
+}
+
+const removeCard = async (params) => {
+    const {
+        CARDTOKEN
+    } = params
+
+    if (!CARDTOKEN) {
+        return "Enter required fields"
+    }
+
+    const raw = { ...params }
+
+    const requestOptions = {
+        method: URLs.remove_card.method,
+        body: raw,
+        redirect: 'follow'
+    }
+
+    try {
+
+       const res = await fetch(URLs.remove_card.url, requestOptions)
+
+       return res
+
+    } catch (error) {
+        console.log(error.message)
+        return error.message
+    }
 }
