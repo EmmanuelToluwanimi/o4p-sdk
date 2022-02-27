@@ -57,7 +57,7 @@ const getAvailableCurrencies = async () => {
     }
 
     try {
-        const res= await fetch(URLs.all_currencies.url, requestOptions)
+        const res = await fetch(URLs.all_currencies.url, requestOptions)
 
         return res
 
@@ -67,7 +67,7 @@ const getAvailableCurrencies = async () => {
     }
 }
 
-const pay = async (details) => {
+const pay = async (params) => {
 
     const {
         merchantId,
@@ -79,7 +79,7 @@ const pay = async (details) => {
         paymentMethod,
         apiMethod,
         sourceType
-    } = details
+    } = params
 
     if (
         !merchantId ||
@@ -92,10 +92,10 @@ const pay = async (details) => {
         !apiMethod ||
         !sourceType
     ) {
-       return "Enter required fields"
+        return "Enter required fields"
     }
 
-    const raw = {...details, failureUrl: URLs.failureUrl.url, returnUrl: URLs.returnUrl.url}
+    const raw = { ...params, failureUrl: URLs.failureUrl.url, returnUrl: URLs.returnUrl.url }
 
     const requestOptions = {
         method: URLs.pay.method,
@@ -110,4 +110,70 @@ const pay = async (details) => {
         console.log(error.message)
         return error.message
     }
+}
+
+const checkout = async (params) => {
+    const {
+        merchantId,
+        currency,
+        merchantReference,
+        amount,
+        paymentMethod
+    } = params
+
+    if (
+        !merchantId ||
+        !currency ||
+        !merchantReference ||
+        !amount ||
+        !paymentMethod
+    ) {
+        return "Enter required fields"
+    }
+
+    const raw = { ...params, returnUrl: URLs.returnUrl.url }
+
+    const requestOptions = {
+        method: URLs.initiate_checkout.method,
+        body: raw,
+        redirect: 'follow'
+    }
+
+    try {
+
+        await fetch(URLs.initiate_checkout.url, requestOptions)
+
+    } catch (error) {
+        console.log(error.message)
+        return error.message
+    }
+}
+
+const tokenize = async (params) => {
+    const {
+        merchantId,
+        cardDetails
+    } = params
+
+    if (!merchantId || !cardDetails) {
+        return "Enter required fields"
+    }
+
+    const raw = { ...params }
+
+    const requestOptions = {
+        method: URLs.tokenization.method,
+        body: raw,
+        redirect: 'follow'
+    }
+
+    try {
+
+        await fetch(URLs.tokenization.url, requestOptions)
+
+    } catch (error) {
+        console.log(error.message)
+        return error.message
+    }
+
 }
