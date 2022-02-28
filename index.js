@@ -1,71 +1,46 @@
-const base_url = "https://api.one4pay.com/"
+import { URLs } from "./src/endpoints.js"
+import { login, o4p } from "./src/index.js"
 
-const URLs = {
-    auth: {
-        url: base_url + "profile/authenticate",
-        method: "POST",
-    },
-    all_currencies: {
-        url: base_url + "currency/all_currencies",
-        method: "GET",
-    },
-    pay: {
-        url: base_url + "transaction/pay",
-        method: "POST",
-    },
-    initiate_checkout: {
-        url: base_url + "transaction/initiate-checkout",
-        method: "POST",
-    },
-    tokenization: {
-        url: base_url + "tokenization/tokenize-card",
-        method: "POST",
-    },
-    remove_card: {
-        url: base_url + "tokenization/remove-card/" + CARDTOKEN,
-        method: "DELETE",
-    },
-    failureUrl: { url: "www.one4pay.com" },
-    returnUrl: { url: "www.mvp-apps.ae" },
+// export const login = async (username, password) => {
+//     const user = { username, password }
+//     // console.log(user);
 
-}
+//     const requestOptions = {
+//         method: URLs.auth.method,
+//         body: JSON.stringify(user),
+//         redirect: 'follow',
+//         headers: {
+//             'Content-Type': 'application/json'
+//         }
+//     }
 
-const login = async (username, password) => {
-    const user = { username, password }
+//     try {
 
-    const requestOptions = {
-        method: URLs.auth.method,
-        body: user,
-        redirect: 'follow'
-    }
+//         const res = await fetch(URLs.auth.url, requestOptions)
+//         console.log(res.headers)
+//     } catch (error) {
+//         console.log(error.message)
+//         return error.message
+//     }
+// }
 
-    try {
+// const getAvailableCurrencies = async () => {
 
-        await fetch(URLs.auth.url, requestOptions)
+//     const requestOptions = {
+//         method: URLs.all_currencies.method,
+//         redirect: 'follow'
+//     }
 
-    } catch (error) {
-        console.log(error.message)
-        return error.message
-    }
-}
+//     try {
+//         const res = await fetch(URLs.all_currencies.url, requestOptions)
 
-const getAvailableCurrencies = async () => {
+//         return res
 
-    const requestOptions = {
-        method: URLs.all_currencies.method,
-        redirect: 'follow'
-    }
-
-    try {
-        const res = await fetch(URLs.all_currencies.url, requestOptions)
-
-        return res
-
-    } catch (error) {
-        console.log(error.message)
-        return error.message
-    }
-}
+//     } catch (error) {
+//         console.log(error.message)
+//         return error.message
+//     }
+// }
 
 const pay = async (params) => {
 
@@ -141,9 +116,9 @@ const checkout = async (params) => {
 
     try {
 
-       const res = await fetch(URLs.initiate_checkout.url, requestOptions)
+        const res = await fetch(URLs.initiate_checkout.url, requestOptions)
 
-       return res
+        return res
 
     } catch (error) {
         console.log(error.message)
@@ -171,9 +146,9 @@ const tokenize = async (params) => {
 
     try {
 
-       const res = await fetch(URLs.tokenization.url, requestOptions)
+        const res = await fetch(URLs.tokenization.url, requestOptions)
 
-       return res
+        return res
 
     } catch (error) {
         console.log(error.message)
@@ -201,12 +176,16 @@ const removeCard = async (params) => {
 
     try {
 
-       const res = await fetch(URLs.remove_card.url, requestOptions)
+        const res = await fetch(URLs.remove_card.url, requestOptions)
 
-       return res
+        return res
 
     } catch (error) {
         console.log(error.message)
         return error.message
     }
 }
+
+const one4pay = { o4p, login }
+
+export default one4pay
