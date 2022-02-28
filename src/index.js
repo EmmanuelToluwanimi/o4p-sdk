@@ -18,10 +18,10 @@ const login = async (user) => {
         }
 
         const res = await fetch(URLs.auth.url, requestOptions)
-        console.log(res.headers.get('x-token'))
+
+        return res.headers.get('x-token')
 
     } catch (error) {
-        console.log(error.message)
         return error.message
     }
 }
@@ -50,7 +50,7 @@ class o4p {
 
             const res = await fetch(URLs.all_currencies.url, requestOptions)
 
-            return res
+            return res.json()
 
         } catch (error) {
             console.log(error.message)
