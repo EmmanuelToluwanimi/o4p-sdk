@@ -99,7 +99,7 @@ This method calls the endpoint to delete tokenized credit card. It takes in the 
 o4p.removeCard(CARDTOKEN)
 ```
 
-# Footnote
+## Footnote
 This project is a demo SDK for One4Pay, a fintech company.
 
 ## Thank you

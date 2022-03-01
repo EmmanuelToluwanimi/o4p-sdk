@@ -24,7 +24,7 @@ const login = async (user) => {
         return res.headers.get('x-token')
 
     } catch (error) {
-        return error.message
+        console.error(error.message)
     }
 }
 
@@ -169,7 +169,7 @@ class transaction {
 
         } catch (error) {
             console.log(error.message)
-            return error.message
+            console.error(error.message)
         }
     }
 
@@ -206,7 +206,7 @@ class transaction {
 
         } catch (error) {
             console.log(error.message)
-            return error.message
+            console.error(error.message)
         }
 
     }

@@ -1,7 +1,7 @@
 import one4pay from "../index.js";
 
 let token;
-let o4p = new one4pay.o4p();
+let o4p = new one4pay.transaction();
 
 const btn_login = document.querySelector("#login");
 const btn_getCurrencies = document.querySelector("#get_currencies");
@@ -11,37 +11,37 @@ const btn_initiate_checkout = document.querySelector("#checkout_url");
 const btn_delete = document.querySelector("#delete_card");
 
 const user = {
-    username,
-    password
+    username: "o4padmin",
+    password: "12304padm!n"
 }
 
 const payment_params = {
-    merchantId,
-    currencyCode,
-    cardDetails,
-    reference,
-    originatingApplicationName,
-    amount,
-    paymentMethod,
-    apiMethod,
-    sourceType,
-    failureUrl,
-    returnUrl,
-    saveCard
+    merchantId: "",
+    currencyCode: "",
+    cardDetails: "",
+    reference: "",
+    originatingApplicationName: "",
+    amount: 0,
+    paymentMethod: "",
+    apiMethod: "",
+    sourceType: "",
+    failureUrl: "",
+    returnUrl: "",
+    saveCard: false
 }
 
 const checkout_info = {
-    merchantId,
-    currencyCode,
-    merchantReference,
-    amount,
-    paymentMethod,
-    returnUrl
+    merchantId: "",
+    currencyCode: "",
+    merchantReference: "",
+    amount: 0,
+    paymentMethod: "",
+    returnUrl: ""
 }
 
 const card_info = {
-    merchantId,
-    cardDetails
+    merchantId: "",
+    cardDetails: ""
 }
 
 btn_login.addEventListener("click", () => auth(user))
@@ -59,7 +59,7 @@ const guard = () => {
 async function auth(user) {
     try {
         token = await one4pay.login(user)
-        o4p = new one4pay.o4p(token)
+        o4p = new one4pay.transaction(token)
         console.log("Login successful")
     } catch (error) {
         console.error(error.message)
