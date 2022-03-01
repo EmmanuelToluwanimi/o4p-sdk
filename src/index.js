@@ -207,6 +207,30 @@ class o4p {
 
     }
 
+    async removeCard(param) {
+        try {
+            if (!param) {
+                throw { message: "Provide required field" }
+            }
+
+            const requestOptions = {
+                method: URLs.remove_card.method,
+                redirect: 'follow',
+                headers: {
+                    'Authorization': 'Bearer ' + this.token
+                }
+            }
+
+            const res = await fetch(URLs.remove_card.url(param), requestOptions)
+
+            return res.json()
+
+        } catch (error) {
+            console.log(error.message)
+            return error.message
+        }
+    }
+
 }
 
 export { o4p, login }

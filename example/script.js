@@ -2,11 +2,13 @@ import one4pay from "../index.js";
 
 let token;
 let o4p = new one4pay.o4p();
+
 const btn_login = document.querySelector("#login");
 const btn_getCurrencies = document.querySelector("#get_currencies");
 const btn_pay = document.querySelector("#make_payment");
 const btn_tokenize = document.querySelector("#tokenize_card");
 const btn_initiate_checkout = document.querySelector("#checkout_url");
+const btn_delete = document.querySelector("#delete_card");
 
 const user = {
     username: 'o4padmin',
@@ -43,10 +45,11 @@ const card_info = {
 }
 
 btn_login.addEventListener("click", () => auth(user))
-btn_getCurrencies.addEventListener("click", () => task())
+btn_getCurrencies.addEventListener("click", () => getCurrencies())
 btn_pay.addEventListener("click", () => payment())
 btn_initiate_checkout.addEventListener("click", () => generateCheckoutUrl())
 btn_tokenize.addEventListener("click", () => tokenize())
+btn_delete.addEventListener("click", () => deleteCard())
 
 
 const guard = () => {
@@ -63,7 +66,7 @@ async function auth(user) {
     }
 }
 
-async function task() {
+async function getCurrencies() {
     // const o4p = new one4pay.o4p(token)
     try {
         guard()
@@ -104,4 +107,13 @@ async function tokenize() {
     }
 }
 
-
+async function deleteCard() {
+    const CARDTOKEN = "dummycardtoken"
+    try {
+        guard()
+        const res = await o4p.removeCard(CARDTOKEN)
+        console.log(res)
+    } catch (error) {
+        console.error(error.message)
+    }
+}

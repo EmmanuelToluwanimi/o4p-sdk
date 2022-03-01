@@ -21,8 +21,8 @@ export const URLs = {
         url: base_url + "tokenization/tokenize-card",
         method: "POST",
     },
-    // remove_card: {
-    //     url: base_url + "tokenization/remove-card/" + (CARDTOKEN || ""),
-    //     method: "DELETE",
-    // },
+    remove_card: {
+        url: (cardtoken) => { return base_url + "tokenization/remove-card/" + cardtoken },
+        method: "DELETE",
+    },
 }
