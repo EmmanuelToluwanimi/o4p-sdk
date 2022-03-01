@@ -28,7 +28,7 @@ const login = async (user) => {
     }
 }
 
-class o4p {
+class transaction {
     constructor(token) {
         this.token = token;
     }
@@ -147,6 +147,10 @@ class o4p {
                 throw { message: "Enter required fields" }
             }
 
+            if (!regx.test(amount)) {
+                throw { message: "Provide numeric amount" }
+            }
+
             const raw = { ...params }
 
             const requestOptions = {
@@ -233,4 +237,4 @@ class o4p {
 
 }
 
-export { o4p, login }
+export { transaction, login }
