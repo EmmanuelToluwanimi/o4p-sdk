@@ -80,7 +80,7 @@ class o4p {
             } = params
 
             if (
-                // !merchantId ||
+                !merchantId ||
                 !currencyCode ||
                 !cardDetails ||
                 !reference ||
@@ -119,6 +119,44 @@ class o4p {
             console.error(error.message)
             return error.message
         }
+    }
+
+    async tokenizeCard(params) {
+        try {
+            if (!params) {
+                throw { message: "Provide required parameters" }
+            }
+
+            const {
+                merchantId,
+                cardDetails
+            } = params
+
+            if (!merchantId || !cardDetails) {
+                throw { message: "Enter required fields" }
+            }
+
+            const raw = { ...params }
+
+            const requestOptions = {
+                method: URLs.tokenization.method,
+                body: JSON.stringify(raw),
+                redirect: 'follow',
+                headers: {
+                    'Authorization': 'Bearer ' + this.token,
+                    'Content-Type': 'application/json'
+                }
+            }
+
+            const res = await fetch(URLs.tokenization.url, requestOptions)
+
+            return res.json()
+
+        } catch (error) {
+            console.log(error.message)
+            return error.message
+        }
+
     }
 
 }
