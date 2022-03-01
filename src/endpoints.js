@@ -25,10 +25,4 @@ export const URLs = {
     //     url: base_url + "tokenization/remove-card/" + (CARDTOKEN || ""),
     //     method: "DELETE",
     // },
-    failureUrl: {
-        url: "www.one4pay.com"
-    },
-    returnUrl: {
-        url: "www.mvp-apps.ae"
-    },
 }

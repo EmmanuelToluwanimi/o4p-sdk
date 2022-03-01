@@ -1,5 +1,7 @@
 import { URLs } from "./endpoints.js";
 
+const regx = /^\d+$/
+
 const login = async (user) => {
     try {
         if (!user.username || !user.password) {
@@ -46,19 +48,23 @@ class o4p {
                     'Authorization': 'Bearer ' + this.token,
                 }
             }
-            
+
             const res = await fetch(URLs.all_currencies.url, requestOptions)
 
             return res.json()
 
         } catch (error) {
-            console.log(error.message)
+            console.error(error.message)
             return error.message
         }
     }
 
-    async pay(params) {
+    async directPay(params) {
         try {
+            if (!params) {
+                throw { message: "Provide required parameters" }
+            }
+
             const {
                 merchantId,
                 currencyCode,
@@ -68,11 +74,13 @@ class o4p {
                 amount,
                 paymentMethod,
                 apiMethod,
-                sourceType
+                sourceType,
+                failureUrl,
+                returnUrl
             } = params
 
             if (
-                !merchantId ||
+                // !merchantId ||
                 !currencyCode ||
                 !cardDetails ||
                 !reference ||
@@ -80,24 +88,35 @@ class o4p {
                 !amount ||
                 !paymentMethod ||
                 !apiMethod ||
-                !sourceType
+                !sourceType ||
+                !failureUrl ||
+                !returnUrl
             ) {
                 throw { message: "Enter required fields" }
             }
 
-            const raw = { ...params, failureUrl: URLs.failureUrl.url, returnUrl: URLs.returnUrl.url }
+            if (!regx.test(amount)) {
+                throw { message: "Provide numeric amount" }
+            }
+
+            const raw = { ...params }
 
             const requestOptions = {
                 method: URLs.pay.method,
-                body: raw,
-                redirect: 'follow'
+                body: JSON.stringify(raw),
+                redirect: 'follow',
+                headers: {
+                    'Authorization': 'Bearer ' + this.token,
+                    'Content-Type': 'application/json'
+                }
             }
 
+            const res = await fetch(URLs.pay.url, requestOptions)
 
-            await fetch(URLs.pay.url, requestOptions)
+            return res.json()
 
         } catch (error) {
-            console.log(error.message)
+            console.error(error.message)
             return error.message
         }
     }
