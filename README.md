@@ -47,18 +47,18 @@ This method calls the endpoint to process an online transaction via direct api. 
 
 ```
 const payment_info = {
-    merchantId, <!-- Your merchant ID -->
-    currencyCode, <!-- Transaction currency. Should be one of the available currencies -->
-    cardDetails, <!-- Encoded credit card details -->
-    reference, <!-- Unique transaction reference -->
-    originatingApplicationName, <!-- Application name where the transaction was initiated -->
-    amount, <!-- Transaction amount -->
-    paymentMethod, <!-- Payment method to be used when processing transaction -->
-    apiMethod, <!-- API method for the transaction. Either one4pay or bank -->
-    sourceType, <!-- Transaction type -->
-    failureUrl, <!-- Failed transaction return url -->
-    returnUrl, <!-- Success Transaction return url -->
-    saveCard <!-- Whether to save card or not (true / false) -->
+    merchantId, //- Your merchant ID 
+    currencyCode, //- Transaction currency. Should be one of the available currencies 
+    cardDetails, //- Encoded credit card details 
+    reference, //- Unique transaction reference 
+    originatingApplicationName, //- Application name where the transaction was initiated 
+    amount, //- Transaction amount 
+    paymentMethod, //- Payment method to be used when processing transaction 
+    apiMethod, //- API method for the transaction. Either one4pay or bank 
+    sourceType, //- Transaction type 
+    failureUrl, //- Failed transaction return url 
+    returnUrl, //- Success Transaction return url 
+    saveCard //- Whether to save card or not (true / false) 
 }
 
 o4p.directPay(payment_info)
