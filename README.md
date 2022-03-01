@@ -1,7 +1,7 @@
-﻿## o4p-sdk
+﻿# o4p-sdk
 A simple Javascript SDK demo for one4pay API
 
-## Installation
+# Installation
 Run  `npm i o4p-sdk`
 
 # Use:
@@ -12,12 +12,12 @@ import one4pay from "o4p-sdk";
 let token; //- declare a global variable for the generated user token
 let o4p = new one4pay.transaction(); //- instantiate the class
 ```
-# NOTE
+## NOTE
 All methods are promise based.
 
-## Features:
+# Features:
 
-# Authentication - Login
+## Authentication - Login
 The login method calls the login endpoint. It takes in a parameter the parameter should be an object containing a user info. A token is generated and returned from the login method.
 
 ```
@@ -32,14 +32,14 @@ o4p = new one4pay.transaction(token) //- set a new instance of the sdk with the 
 
 # Transaction Processing
 
-# Get Available Currencies
+## Get Available Currencies
 This method calls the endpoint to retrieve all available currencies. An array of available of currencies is returned.
 
 ```
 o4p.getAvailableCurrencies()
 ```
 
-# Direct Pay
+## Direct Pay
 This method calls the endpoint to process an online transaction via direct api. This method takes in an object containing transactional details as a parameter.
 
 ```
@@ -61,7 +61,7 @@ const payment_info = {
 o4p.directPay(payment_info)
 ```
 
-# Hosted Checkout
+## Hosted Checkout
 This method calls the endpoint that initiates hosted checkout and returns a checkoutUrl. An object parameter containing the checkout info is passed into the method.
 
 ```
@@ -77,7 +77,7 @@ const checkout_info = {
 o4p.initiateCheckout(checkout_info)
 ```
 
-# Tokenization - Tokenize card
+## Tokenization - Tokenize card
 This method calls the endpoint to tokenize credit card and returns a card token. It takes in an object parameter containing the card information.
 
 ```
@@ -89,7 +89,7 @@ const card_info = {
 o4p.tokenizeCard(card_info)
 ```
 
-# Remove Card
+## Remove Card
 This method calls the endpoint to delete tokenized credit card. It takes in the credit card token as a parameter.
 
 ```
