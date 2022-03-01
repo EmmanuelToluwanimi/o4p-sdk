@@ -29,7 +29,7 @@ const user = {
     password
 }
 
-one4pay.login(user)
+one4pay.login(user).then((res) => console.log(res));
 o4p = new one4pay.transaction(token) //- set a new instance of the sdk with the token generated.
 ```
 
@@ -39,7 +39,7 @@ o4p = new one4pay.transaction(token) //- set a new instance of the sdk with the 
 This method calls the endpoint to retrieve all available currencies. An array of available of currencies is returned.
 
 ```
-o4p.getAvailableCurrencies()
+o4p.getAvailableCurrencies().then((res) => console.log(res));
 ```
 
 ## Direct Pay
@@ -61,7 +61,7 @@ const payment_info = {
     saveCard //- Whether to save card or not (true / false) 
 }
 
-o4p.directPay(payment_info)
+o4p.directPay(payment_info).then((res) => console.log(res));
 ```
 
 ## Hosted Checkout
@@ -77,7 +77,7 @@ const checkout_info = {
     returnUrl //- Success Transaction return url 
 }
 
-o4p.initiateCheckout(checkout_info)
+o4p.initiateCheckout(checkout_info).then((res) => console.log(res));
 ```
 
 ## Tokenization - Tokenize card
@@ -89,14 +89,14 @@ const card_info = {
     cardDetails //- Encoded credit card details 
 }
 
-o4p.tokenizeCard(card_info)
+o4p.tokenizeCard(card_info).then((res) => console.log(res));
 ```
 
 ## Remove Card
 This method calls the endpoint to delete tokenized credit card. It takes in the credit card token as a parameter.
 
 ```
-o4p.removeCard(CARDTOKEN)
+o4p.removeCard(CARDTOKEN).then((res) => console.log(res));
 ```
 
 ## Footnote
