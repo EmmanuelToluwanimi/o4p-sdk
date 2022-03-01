@@ -121,6 +121,54 @@ class o4p {
         }
     }
 
+    async initiateCheckout(params) {
+        try {
+            if (!params) {
+                throw { message: "Provide required parameters" }
+            }
+
+            const {
+                merchantId,
+                currencyCode,
+                merchantReference,
+                amount,
+                paymentMethod,
+                returnUrl
+            } = params
+
+            if (
+                !merchantId ||
+                !currencyCode ||
+                !merchantReference ||
+                !amount ||
+                !paymentMethod ||
+                !returnUrl
+            ) {
+                throw { message: "Enter required fields" }
+            }
+
+            const raw = { ...params }
+
+            const requestOptions = {
+                method: URLs.initiate_checkout.method,
+                body: JSON.stringify(raw),
+                redirect: 'follow',
+                headers: {
+                    'Authorization': 'Bearer ' + this.token,
+                    'Content-Type': 'application/json'
+                }
+            }
+
+            const res = await fetch(URLs.initiate_checkout.url, requestOptions)
+
+            return res.json()
+
+        } catch (error) {
+            console.log(error.message)
+            return error.message
+        }
+    }
+
     async tokenizeCard(params) {
         try {
             if (!params) {
