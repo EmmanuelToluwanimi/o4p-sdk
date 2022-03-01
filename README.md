@@ -69,12 +69,12 @@ This method calls the endpoint that initiates hosted checkout and returns a chec
 
 ```
 const checkout_info = {
-    merchantId, <!-- Your merchant ID -->
-    currency,  <!-- Transaction currency. Should be one of the available currencies -->
-    merchantReference, <!-- Unique transaction reference -->
-    amount, <!-- Transaction amount -->
-    paymentMethod, <!-- Payment method to be used when processing transaction -->
-    returnUrl <!-- Success Transaction return url -->
+    merchantId, //- Your merchant ID 
+    currency,  //- Transaction currency. Should be one of the available currencies 
+    merchantReference, //- Unique transaction reference 
+    amount, //- Transaction amount 
+    paymentMethod, //- Payment method to be used when processing transaction 
+    returnUrl //- Success Transaction return url 
 }
 
 o4p.initiateCheckout(checkout_info)
@@ -85,8 +85,8 @@ This method calls the endpoint to tokenize credit card and returns a card token.
 
 ```
 const card_info = {
-    merchantId, <!-- Your merchant ID -->
-    cardDetails <!-- Encoded credit card details -->
+    merchantId, //- Your merchant ID 
+    cardDetails //- Encoded credit card details 
 }
 
 o4p.tokenizeCard(card_info)
