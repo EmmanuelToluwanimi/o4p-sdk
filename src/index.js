@@ -46,11 +46,55 @@ class o4p {
                     'Authorization': 'Bearer ' + this.token,
                 }
             }
-
-
+            
             const res = await fetch(URLs.all_currencies.url, requestOptions)
 
             return res.json()
+
+        } catch (error) {
+            console.log(error.message)
+            return error.message
+        }
+    }
+
+    async pay(params) {
+        try {
+            const {
+                merchantId,
+                currencyCode,
+                cardDetails,
+                reference,
+                originatingApplicationName,
+                amount,
+                paymentMethod,
+                apiMethod,
+                sourceType
+            } = params
+
+            if (
+                !merchantId ||
+                !currencyCode ||
+                !cardDetails ||
+                !reference ||
+                !originatingApplicationName ||
+                !amount ||
+                !paymentMethod ||
+                !apiMethod ||
+                !sourceType
+            ) {
+                throw { message: "Enter required fields" }
+            }
+
+            const raw = { ...params, failureUrl: URLs.failureUrl.url, returnUrl: URLs.returnUrl.url }
+
+            const requestOptions = {
+                method: URLs.pay.method,
+                body: raw,
+                redirect: 'follow'
+            }
+
+
+            await fetch(URLs.pay.url, requestOptions)
 
         } catch (error) {
             console.log(error.message)
