@@ -1,7 +1,7 @@
 {
   "name": "o4p-sdk",
   "version": "1.0.0",
-  "description": "A trial sdk for fintech",
+  "description": "A demo sdk for fintech",
   "main": "index.js",
   "type": "module",
   "scripts": {
