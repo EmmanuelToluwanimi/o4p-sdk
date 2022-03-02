@@ -19,6 +19,9 @@
   ],
   "author": "Emmanuel Toluwanimi",
   "license": "ISC",
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com"
+  },
   "bugs": {
     "url": "https://github.com/EmmanuelToluwanimi/o4p-sdk/issues"
   },
