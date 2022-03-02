@@ -11,8 +11,8 @@ const btn_initiate_checkout = document.querySelector("#checkout_url");
 const btn_delete = document.querySelector("#delete_card");
 
 const user = {
-    username: "o4padmin",
-    password: "12304padm!n"
+    username: "",
+    password: ""
 }
 
 const payment_params = {
