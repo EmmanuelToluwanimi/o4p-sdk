@@ -12,8 +12,7 @@ To use this package in your project, import the method below.
 ```
 import one4pay from "o4p-sdk";
 
-let token; //- declare a global variable for the generated user token
-let o4p = new one4pay.transaction(); //- instantiate the class
+let o4p = new one4pay(); //- instantiate the class
 ```
 ## NOTE
 All methods are promise based.
@@ -30,7 +29,7 @@ const user = {
 }
 
 one4pay.login(user).then((res) => console.log(res));
-o4p = new one4pay.transaction(token) //- set a new instance of the sdk with the token generated.
+o4p = new one4pay(token) //- set a new instance of the sdk with the token generated.
 ```
 
 # Transaction Processing
