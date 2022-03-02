@@ -1,10 +1,10 @@
-﻿# o4p-sdk
+﻿# o4p
 A simple Javascript SDK demo for one4pay API
 
 # Installation
 Run  
 ```
-npm i o4p-sdk
+npm i o4p
 ```
 
 # Use:
