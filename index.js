@@ -115,7 +115,6 @@ class one4pay {
 
         } catch (error) {
             console.error(error.message)
-            return error.message
         }
     }
 
@@ -166,7 +165,6 @@ class one4pay {
             return res.json()
 
         } catch (error) {
-            console.log(error.message)
             console.error(error.message)
         }
     }
@@ -203,7 +201,6 @@ class one4pay {
             return res.json()
 
         } catch (error) {
-            console.log(error.message)
             console.error(error.message)
         }
 
@@ -228,8 +225,7 @@ class one4pay {
             return res.json()
 
         } catch (error) {
-            console.log(error.message)
-            return error.message
+            console.error(error.message)
         }
     }
 
