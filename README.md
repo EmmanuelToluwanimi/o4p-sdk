@@ -10,7 +10,7 @@ npm i o4p-sdk
 # Use:
 To use this package in your project, import the method below.
 ```
-import one4pay from "o4p-sdk";
+import one4pay from "o4p";
 
 let o4p = new one4pay(); //- instantiate the class
 ```

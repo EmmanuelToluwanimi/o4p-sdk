@@ -1,5 +1,5 @@
 {
-  "name": "o4p-sdk",
+  "name": "o4p",
   "version": "1.0.0",
   "description": "A demo sdk for One4Pay, a fintech company",
   "main": "index.js",
