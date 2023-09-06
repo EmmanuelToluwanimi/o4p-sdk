@@ -1,5 +1,5 @@
 ﻿# o4p
-A simple Javascript SDK and an NPM package for one4pay(fintech) API
+A Javascript SDK and NPM package for one4pay(fintech) API
 
 # Installation
 Run  
